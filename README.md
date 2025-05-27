@@ -33,12 +33,12 @@
 
 ##  Технологии и инструменты
 
-- **Язык:** Kotlin  
+- **Язык:** Java  
 - **Среда разработки:** Android Studio Arctic Fox+  
 - **UI-дизайн:** Figma  
 - **Сборка проекта:** Gradle  
 - **Система контроля версий:** Git + GitHub  
-- **Генерация документации:** Dokka (аналог Javadoc для Kotlin)
+- **Генерация документации:** Dokka (аналог Javadoc для Java)
 
 ---
 
@@ -49,7 +49,6 @@
 ```gradle
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
 }
 
 dependencies {
