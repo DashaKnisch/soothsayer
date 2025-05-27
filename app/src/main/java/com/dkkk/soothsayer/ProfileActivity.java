@@ -50,4 +50,14 @@ public class ProfileActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
+    /**
+     * Обработчик нажатия кнопки перехода на главный экран.
+     * Запускает HomeActivity.
+     * @param view View, вызвавший метод (кнопка перехода)
+     */
+    public void goHome(View view) {
+        Intent intent = new Intent(ProfileActivity.this, Homeactivity.class);
+        startActivity(intent);
+    }
 }

@@ -37,4 +37,15 @@
         android:text="Зарегистрироваться"
         android:textColor="@color/white"
         android:backgroundTint="@color/logo" />
+
+    <Button
+        android:id="@+id/btnBackToLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Назад ко входу"
+        android:onClick="goToLogin"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/logo"/>
+
 </LinearLayout>

@@ -61,4 +61,13 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Обработчик нажатия кнопки "Назад ко входу".
+     * Возвращает пользователя на экран входа (LoginActivity).
+     */
+    public void goToLogin(android.view.View view) {
+        finish();
+    }
+
 }
