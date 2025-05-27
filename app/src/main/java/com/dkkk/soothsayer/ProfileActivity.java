@@ -8,10 +8,19 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Активность профиля пользователя.
+ */
 public class ProfileActivity extends AppCompatActivity {
 
+    /** TextView для отображения имени пользователя */
     TextView nameText;
 
+    /**
+     * Метод жизненного цикла onCreate.
+     * Инициализирует интерфейс и загружает имя пользователя из SharedPreferences.
+     * @param savedInstanceState сохранённое состояние активности (если есть)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +34,18 @@ public class ProfileActivity extends AppCompatActivity {
         nameText.setText("Имя: " + username);
     }
 
+    /**
+     * Обработчик нажатия кнопки выхода из аккаунта.
+     * Очищает данные пользователя из SharedPreferences и возвращает на экран входа.
+     * @param view View, вызвавший этот метод (кнопка logout)
+     */
     public void logout(View view) {
         SharedPreferences preferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.clear();
+        editor.clear();  // Очищаем все сохранённые данные
         editor.apply();
 
-        // Возврат на экран входа
+        // Переход на экран LoginActivity, очищая стек активностей
         Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

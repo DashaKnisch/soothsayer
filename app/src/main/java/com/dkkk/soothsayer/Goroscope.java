@@ -10,10 +10,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.content.Intent;
 
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Активность для отображения гороскопа по знаку зодиака.
+ * Позволяет пользователю ввести знак, отображает текст гороскопа с эффектом печати и изображение знака.
+ */
 public class Goroscope extends AppCompatActivity {
 
     private EditText user_field;
@@ -25,6 +28,12 @@ public class Goroscope extends AppCompatActivity {
     private int index = 0;
     private String horoscopeText = "";
 
+    /**
+     * Инициализация активности.
+     * Настраивает интерфейс и обработчик нажатия кнопки.
+     *
+     * @param savedInstanceState сохранённое состояние активности
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +46,13 @@ public class Goroscope extends AppCompatActivity {
         zodiacImage = findViewById(R.id.zodiacImage);
 
         main_btn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Обработка нажатия на кнопку "Показать гороскоп".
+             * Получает знак зодиака из поля ввода, получает текст и изображение,
+             * запускает анимацию печати текста.
+             *
+             * @param v кнопка, на которую нажали
+             */
             @Override
             public void onClick(View v) {
                 String zodiac = user_field.getText().toString().toLowerCase();
@@ -53,16 +69,27 @@ public class Goroscope extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Runnable для эффекта поочередного вывода текста гороскопа с задержкой.
+     */
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
             if (index < horoscopeText.length()) {
                 result_info.append(String.valueOf(horoscopeText.charAt(index)));
                 index++;
-                handler.postDelayed(this, 50); // Задержка между символами (миллисекунды)
+                handler.postDelayed(this, 50); // Задержка между символами (мс)
             }
         }
     };
+
+    /**
+     * Возвращает текст гороскопа для заданного знака зодиака.
+     *
+     * @param zodiac знак зодиака (русское или английское название в нижнем регистре)
+     * @return текст гороскопа или пустая строка, если знак не распознан
+     */
     private String getHoroscopeText(String zodiac) {
         switch (zodiac) {
             case "овен":
@@ -105,6 +132,13 @@ public class Goroscope extends AppCompatActivity {
                 return "";
         }
     }
+
+    /**
+     * Возвращает идентификатор ресурса изображения для заданного знака зодиака.
+     *
+     * @param zodiac знак зодиака (русское или английское название в нижнем регистре)
+     * @return идентификатор ресурса изображения или 0, если знак не распознан
+     */
     private int getImageResource(String zodiac) {
         switch (zodiac) {
             case "овен":
@@ -147,6 +181,12 @@ public class Goroscope extends AppCompatActivity {
                 return 0;
         }
     }
+
+    /**
+     * Обработчик нажатия кнопки возврата на главный экран.
+     *
+     * @param v кнопка, на которую нажали
+     */
     public void GoBack2(View v) {
         Intent intent = new Intent(this, Homeactivity.class);
         startActivity(intent);
